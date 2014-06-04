@@ -88,6 +88,11 @@
         </dependency>
         <dependency>
             <groupId>com.codenvy.ide</groupId>
+            <artifactId>codenvy-ext-wso2-core</artifactId>
+            <version>${codenvy-plugin-wso2-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.ide</groupId>
             <artifactId>codenvy-ide-core</artifactId>
             <version>${codenvy.ide.version}</version>
             <exclusions>

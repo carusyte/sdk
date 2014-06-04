@@ -42,6 +42,7 @@
         <tag>3.0.0-M17</tag>
     </scm>
     <properties>
+        <codenvy-plugin-wso2-version>1.0.0-M1-SNAPSHOT</codenvy-plugin-wso2-version>
         <org.apache.tomcat.version>7.0.50</org.apache.tomcat.version>
     </properties>
     <repositories>
