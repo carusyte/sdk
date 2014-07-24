@@ -61,6 +61,8 @@
     <inherits name="com.codenvy.plugin.npm.client.Npm"/>
     <inherits name="com.codenvy.plugin.yeoman.client.Yeoman"/>
 
+    <inherits name="com.github.whitlockjc.codenvy.ext.svn.Subversion"/>
+
     <stylesheet src="IDE.css"/>
 
     <!-- Specify the app entry point class.                         -->

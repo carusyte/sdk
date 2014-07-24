@@ -46,5 +46,5 @@ fi
 echo "$(tput setaf 2)INFO: Launching Codenvy SDK"$(tput sgr0)
 sleep 1
 
-cd bin
-./codenvy.sh $*
+##cd bin
+##./codenvy.sh $*
