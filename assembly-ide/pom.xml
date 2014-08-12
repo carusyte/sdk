@@ -310,7 +310,7 @@
                     </modules>
                     <logLevel>INFO</logLevel>
                     <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
-                    <!--<style>PRETTY</style>-->
+                    <style>PRETTY</style>
                     <!--<enableClosureCompiler>true</enableClosureCompiler>-->
                 </configuration>
             </plugin>
