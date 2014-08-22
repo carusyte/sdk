@@ -16,7 +16,7 @@
     <parent>
         <artifactId>codenvy-sdk-parent</artifactId>
         <groupId>com.codenvy.sdk</groupId>
-        <version>3.0.0-M19-SNAPSHOT</version>
+        <version>3.1.0-SNAPSHOT</version>
     </parent>
     <artifactId>assembly-ide</artifactId>
     <packaging>war</packaging>
@@ -39,17 +39,6 @@
         </dependency>
         <dependency>
             <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ext-debugger-java</artifactId>
-            <version>${codenvy.ide.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>tools</artifactId>
-                    <groupId>sun.jdt</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.ide</groupId>
             <artifactId>codenvy-ext-git</artifactId>
             <version>${codenvy.plugin.git.version}</version>
         </dependency>
@@ -60,22 +49,7 @@
         </dependency>
         <dependency>
             <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ext-java</artifactId>
-            <version>${codenvy.ide.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ext-maven</artifactId>
-            <version>${codenvy.ide.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.ide</groupId>
             <artifactId>codenvy-ext-runner</artifactId>
-            <version>${codenvy.ide.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ext-tutorials</artifactId>
             <version>${codenvy.ide.version}</version>
         </dependency>
         <dependency>
@@ -90,7 +64,7 @@
         </dependency>
         <dependency>
             <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ide-env-dummy</artifactId>
+            <artifactId>codenvy-ide-jseditor</artifactId>
             <version>${codenvy.ide.version}</version>
         </dependency>
         <dependency>
@@ -144,9 +118,45 @@
             <version>${codenvy.plugin.bower.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.codenvy.plugin-editor-codemirror</groupId>
+            <artifactId>plugin-editor-codemirror</artifactId>
+            <version>${codenvy.plugin-editor-codemirror.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-java</groupId>
+            <artifactId>codenvy-ext-debugger-java</artifactId>
+            <version>${codenvy.plugin-java.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>tools</artifactId>
+                    <groupId>sun.jdt</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-java</groupId>
+            <artifactId>codenvy-ext-java</artifactId>
+            <version>${codenvy.plugin-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-java</groupId>
+            <artifactId>codenvy-ext-maven</artifactId>
+            <version>${codenvy.plugin-java.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.codenvy.plugin-npm</groupId>
             <artifactId>npm-client</artifactId>
             <version>${codenvy.plugin.npm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-sdk</groupId>
+            <artifactId>codenvy-ext-plugins</artifactId>
+            <version>${codenvy.plugin-sdk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-sdk</groupId>
+            <artifactId>codenvy-ide-env-dummy</artifactId>
+            <version>${codenvy.plugin-sdk.version}</version>
         </dependency>
         <dependency>
             <groupId>com.codenvy.plugin-yeoman</groupId>

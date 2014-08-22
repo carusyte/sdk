@@ -40,7 +40,7 @@
     <inherits name='com.codenvy.ide.ext.github.GitHub'/>
     <inherits name='com.codenvy.ide.ext.ssh.Ssh'/>
     <inherits name='com.codenvy.ide.ext.tutorials.Tutorials'/>
-    <inherits name='com.codenvy.ide.ext.datasource.Datasource'/>
+
 
     <inherits name='com.codenvy.api.Core'/>
     <inherits name='com.codenvy.api.Builder'/>
@@ -60,6 +60,9 @@
     <inherits name="com.codenvy.plugin.bower.client.Bower"/>
     <inherits name="com.codenvy.plugin.npm.client.Npm"/>
     <inherits name="com.codenvy.plugin.yeoman.client.Yeoman"/>
+    <inherits name="com.codenvy.ide.jseditor.JsEditor"/>
+    <inherits name="com.codenvy.ide.editor.codemirror.CodeMirrorEditor"/>
+
 
     <inherits name="com.github.whitlockjc.codenvy.ext.svn.Subversion"/>
 

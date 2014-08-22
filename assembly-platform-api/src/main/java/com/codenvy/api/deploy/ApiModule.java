@@ -17,6 +17,7 @@ import com.codenvy.api.builder.BuilderService;
 import com.codenvy.api.builder.LastInUseBuilderSelectionStrategy;
 import com.codenvy.api.builder.internal.SlaveBuilderService;
 import com.codenvy.api.core.rest.ApiExceptionMapper;
+import com.codenvy.api.core.rest.ApiInfoService;
 import com.codenvy.api.project.server.ProjectService;
 import com.codenvy.api.project.server.ProjectTypeDescriptionService;
 import com.codenvy.api.runner.LastInUseRunnerSelectionStrategy;
@@ -30,14 +31,6 @@ import com.codenvy.api.user.server.UserService;
 import com.codenvy.api.vfs.server.ContentStreamWriter;
 import com.codenvy.api.vfs.server.RequestValidator;
 import com.codenvy.api.vfs.server.VirtualFileSystemFactory;
-import com.codenvy.api.vfs.server.exceptions.ConstraintExceptionMapper;
-import com.codenvy.api.vfs.server.exceptions.InvalidArgumentExceptionMapper;
-import com.codenvy.api.vfs.server.exceptions.ItemAlreadyExistExceptionMapper;
-import com.codenvy.api.vfs.server.exceptions.ItemNotFoundExceptionMapper;
-import com.codenvy.api.vfs.server.exceptions.LockExceptionMapper;
-import com.codenvy.api.vfs.server.exceptions.NotSupportedExceptionMapper;
-import com.codenvy.api.vfs.server.exceptions.PermissionDeniedExceptionMapper;
-import com.codenvy.api.vfs.server.exceptions.VirtualFileSystemRuntimeExceptionMapper;
 import com.codenvy.api.vfs.server.search.SearcherProvider;
 import com.codenvy.ide.env.TokenValidatorImpl;
 import com.codenvy.ide.everrest.CodenvyAsynchronousJobPool;
@@ -65,8 +58,6 @@ import com.codenvy.vfs.impl.fs.CleanableSearcherProvider;
 import com.codenvy.vfs.impl.fs.LocalFSMountStrategy;
 import com.codenvy.vfs.impl.fs.LocalFileSystemRegistryPlugin;
 import com.codenvy.vfs.impl.fs.WorkspaceHashLocalFSMountStrategy;
-import com.codenvy.vfs.impl.fs.exceptions.GitUrlResolveExceptionMapper;
-import com.codenvy.vfs.impl.fs.exceptions.LocalPathResolveExceptionMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
 import com.google.inject.util.Providers;
@@ -80,6 +71,7 @@ import org.everrest.guice.PathKey;
 public class ApiModule extends AbstractModule {
     @Override
     protected void configure() {
+        bind(ApiInfoService.class);
         bind(ProjectService.class);
         bind(ProjectTypeDescriptionService.class);
         bind(com.codenvy.api.project.server.ProjectImportersService.class);
@@ -88,16 +80,6 @@ public class ApiModule extends AbstractModule {
         bind(SearcherProvider.class).to(CleanableSearcherProvider.class);
         bind(RequestValidator.class).toProvider(Providers.<RequestValidator>of(null));
         bind(ContentStreamWriter.class);
-        bind(ConstraintExceptionMapper.class);
-        bind(InvalidArgumentExceptionMapper.class);
-        bind(LockExceptionMapper.class);
-        bind(ItemNotFoundExceptionMapper.class);
-        bind(ItemAlreadyExistExceptionMapper.class);
-        bind(NotSupportedExceptionMapper.class);
-        bind(PermissionDeniedExceptionMapper.class);
-        bind(LocalPathResolveExceptionMapper.class);
-        bind(GitUrlResolveExceptionMapper.class);
-        bind(VirtualFileSystemRuntimeExceptionMapper.class);
         bind(VirtualFileSystemFactory.class);
         bind(ApiExceptionMapper.class);
         bind(BuilderSelectionStrategy.class).to(LastInUseBuilderSelectionStrategy.class);
@@ -116,12 +98,12 @@ public class ApiModule extends AbstractModule {
         bind(AsynchronousJobPool.class).to(CodenvyAsynchronousJobPool.class);
         bind(new PathKey<>(AsynchronousJobService.class, "/async/{ws-id}")).to(AsynchronousJobService.class);
         bind(GitService.class);
-        bind(BranchListWriter.class).toInstance(new BranchListWriter());
-        bind(CommitMessageWriter.class).toInstance(new CommitMessageWriter());
-        bind(MergeResultWriter.class).toInstance(new MergeResultWriter());
-        bind(RemoteListWriter.class).toInstance(new RemoteListWriter());
-        bind(StatusPageWriter.class).toInstance(new StatusPageWriter());
-        bind(TagListWriter.class).toInstance(new TagListWriter());
+        bind(BranchListWriter.class);
+        bind(CommitMessageWriter.class);
+        bind(MergeResultWriter.class);
+        bind(RemoteListWriter.class);
+        bind(StatusPageWriter.class);
+        bind(TagListWriter.class);
         bind(FormatService.class);
         bind(GitHubService.class);
         bind(GitConnectionFactory.class).to(NativeGitConnectionFactory.class);
@@ -137,5 +119,12 @@ public class ApiModule extends AbstractModule {
         bind(TokenValidator.class).to(TokenValidatorImpl.class);
 
         bind(com.codenvy.api.core.notification.WSocketEventBusServer.class);
+
+        install(new com.codenvy.api.analytics.AnalyticsModule());
+        install(new com.codenvy.api.project.server.BaseProjectModule());
+        install(new com.codenvy.api.builder.internal.BuilderModule());
+        install(new com.codenvy.api.runner.internal.RunnerModule());
+        install(new com.codenvy.api.vfs.server.VirtualFileSystemModule());
+        install(new com.codenvy.docs.DocsModule());
     }
 }
