@@ -1,3 +1,15 @@
+<%--
+
+    Copyright (c) 2012-2014 Codenvy, S.A.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+
+    Contributors:
+      Codenvy, S.A. - initial API and implementation
+
+--%>
 <!--
     CODENVY CONFIDENTIAL
     __________________
@@ -22,8 +34,9 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Codenvy IDE</title>
-    <link rel="shortcut icon" href="/ide/_app/favicon.ico"/>
+    <title>Codenvy Developer Environment</title>
+    <link rel="shortcut icon" href="/ws/_app/favicon.ico"/>
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" language="javascript">
 
@@ -39,6 +52,8 @@
 
         window.IDE.config = {
 
+            "context": "/ws",
+
             "workspaceName": <%= EnvironmentContext.getCurrent().getWorkspaceName() == null ? null : "\"" + EnvironmentContext.getCurrent().getWorkspaceName() + "\"" %>,
 
             "workspaceId": <%= EnvironmentContext.getCurrent().getWorkspaceId() == null ? null : "\"" + EnvironmentContext.getCurrent().getWorkspaceId() + "\"" %>,
@@ -49,9 +64,11 @@
 
             "hiddenFiles": ".*",
 
-            "facebookLikeURL": "/ide/_app/facebook-like.html",
+            "facebookLikeURL": "/ws/_app/facebook-like.html",
 
-            "googleLikeURL": "/ide/_app/google-like.html"
+            "googleLikeURL": "/ws/_app/google-like.html",
+
+            "javaCodeAssistant": "/java-ca"
 
         };
 
@@ -81,11 +98,11 @@
          * Make URL pretty
          */
 
-        window.history.pushState("", window.document.title, "/ide/" + window.IDE.config.workspaceName);
+        window.history.pushState("", window.document.title, "/ws/" + window.IDE.config.workspaceName);
 
     </script>
 
-    <script type="text/javascript" language="javascript" src="/ide/_app/browserNotSupported.js"></script>
-    <script type="text/javascript" language="javascript" src="/ide/_app/_app.nocache.js"></script>
+    <script type="text/javascript" language="javascript" src="/ws/_app/browserNotSupported.js"></script>
+    <script type="text/javascript" language="javascript" src="/ws/_app/_app.nocache.js"></script>
 </head>
 </html>

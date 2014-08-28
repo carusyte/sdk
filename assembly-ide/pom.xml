@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    CODENVY CONFIDENTIAL
-    __________________
+    Copyright (c) 2012-2014 Codenvy, S.A.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
 
-     [2012] - [2014] Codenvy, S.A.
-     All Rights Reserved.
-
-    NOTICE:  All information contained herein is, and remains
-    the property of Codenvy S.A. and its suppliers,
-    if any.  The intellectual and technical concepts contained
-    herein are proprietary to Codenvy S.A.
-    and its suppliers and may be covered by U.S. and Foreign Patents,
-    patents in process, and are protected by trade secret or copyright law.
-    Dissemination of this information or reproduction of this material
-    is strictly forbidden unless prior written permission is obtained
-    from Codenvy S.A..
+    Contributors:
+      Codenvy, S.A. - initial API and implementation
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -23,7 +16,7 @@
     <parent>
         <artifactId>codenvy-sdk-parent</artifactId>
         <groupId>com.codenvy.sdk</groupId>
-        <version>3.0.0-M17</version>
+        <version>3.1.0-SNAPSHOT</version>
     </parent>
     <artifactId>assembly-ide</artifactId>
     <packaging>war</packaging>
@@ -46,77 +39,22 @@
         </dependency>
         <dependency>
             <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ext-debugger-java</artifactId>
-            <version>${codenvy.ide.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>tools</artifactId>
-                    <groupId>sun.jdt</groupId>
-                </exclusion>
-            </exclusions>
+            <artifactId>codenvy-ext-datasource-client</artifactId>
+            <version>${codenvy.plugin.datasource.version}</version>
         </dependency>
         <dependency>
             <groupId>com.codenvy.ide</groupId>
             <artifactId>codenvy-ext-git</artifactId>
-            <version>${codenvy.ide.version}</version>
+            <version>${codenvy.plugin.git.version}</version>
         </dependency>
         <dependency>
             <groupId>com.codenvy.ide</groupId>
             <artifactId>codenvy-ext-github</artifactId>
-            <version>${codenvy.ide.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ext-java</artifactId>
-            <version>${codenvy.ide.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>org.eclipse.core.jobs</artifactId>
-                    <groupId>org.eclipse.birt.runtime</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.core.resources</artifactId>
-                    <groupId>org.eclipse.birt.runtime</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.core.runtime</artifactId>
-                    <groupId>org.eclipse.birt.runtime</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.equinox.common</artifactId>
-                    <groupId>org.eclipse.birt.runtime</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.core.contenttype</artifactId>
-                    <groupId>org.eclipse.core</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.text</artifactId>
-                    <groupId>org.eclipse.text</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.jdt.core</artifactId>
-                    <groupId>org.eclipse.tycho</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>org.eclipse.osgi</artifactId>
-                    <groupId>org.eclipse.tycho</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ext-maven</artifactId>
-            <version>${codenvy.ide.version}</version>
+            <version>${codenvy.plugin.git.version}</version>
         </dependency>
         <dependency>
             <groupId>com.codenvy.ide</groupId>
             <artifactId>codenvy-ext-runner</artifactId>
-            <version>${codenvy.ide.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ext-tutorials</artifactId>
             <version>${codenvy.ide.version}</version>
         </dependency>
         <dependency>
@@ -126,17 +64,12 @@
         </dependency>
         <dependency>
             <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ext-wso2-core</artifactId>
-            <version>${codenvy-plugin-wso2-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.ide</groupId>
             <artifactId>codenvy-ide-core</artifactId>
             <version>${codenvy.ide.version}</version>
         </dependency>
         <dependency>
             <groupId>com.codenvy.ide</groupId>
-            <artifactId>codenvy-ide-env-dummy</artifactId>
+            <artifactId>codenvy-ide-jseditor</artifactId>
             <version>${codenvy.ide.version}</version>
         </dependency>
         <dependency>
@@ -183,6 +116,62 @@
             <groupId>com.codenvy.plugin-angularjs</groupId>
             <artifactId>angularjs-core-client</artifactId>
             <version>${codenvy.plugin.angularjs.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-bower</groupId>
+            <artifactId>bower-client</artifactId>
+            <version>${codenvy.plugin.bower.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-editor-codemirror</groupId>
+            <artifactId>plugin-editor-codemirror</artifactId>
+            <version>${codenvy.plugin-editor-codemirror.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-editor-orion</groupId>
+            <artifactId>plugin-editor-orion</artifactId>
+            <version>${codenvy.plugin-editor-orion.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-java</groupId>
+            <artifactId>codenvy-ext-debugger-java</artifactId>
+            <version>${codenvy.plugin-java.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>tools</artifactId>
+                    <groupId>sun.jdt</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-java</groupId>
+            <artifactId>codenvy-ext-java</artifactId>
+            <version>${codenvy.plugin-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-java</groupId>
+            <artifactId>codenvy-ext-maven</artifactId>
+            <version>${codenvy.plugin-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-npm</groupId>
+            <artifactId>npm-client</artifactId>
+            <version>${codenvy.plugin.npm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-sdk</groupId>
+            <artifactId>codenvy-ext-plugins</artifactId>
+            <version>${codenvy.plugin-sdk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-sdk</groupId>
+            <artifactId>codenvy-ide-env-dummy</artifactId>
+            <version>${codenvy.plugin-sdk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-yeoman</groupId>
+            <artifactId>yeoman-client</artifactId>
+            <version>${codenvy.plugin.yeoman.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.gwt.inject</groupId>

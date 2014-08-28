@@ -8,10 +8,10 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.api.deploy;
+
+package com.codenvy.ide.ext.java.server;
 
 import com.codenvy.ide.env.SingleEnvironmentFilter;
-import com.codenvy.ide.everrest.CodenvyEverrestWebSocketServlet;
 import com.codenvy.inject.DynaModule;
 import com.google.inject.servlet.ServletModule;
 
@@ -33,7 +33,6 @@ public class ApiServletModule extends ServletModule {
         params.put("ws-name", "default");
         params.put("ws-id", "1q2w3e");
         filter("/*").through(SingleEnvironmentFilter.class, params);
-        serve("/ws/*").with(CodenvyEverrestWebSocketServlet.class);
         serve("/*").with(GuiceEverrestServlet.class);
     }
 }
