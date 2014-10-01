@@ -28,14 +28,12 @@
     from Codenvy S.A..
 -->
 
-<%@ page import="com.codenvy.commons.env.EnvironmentContext" %>
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Codenvy Developer Environment</title>
-    <link rel="shortcut icon" href="/ide/_app/favicon.ico"/>
+    <link rel="shortcut icon" href="/ws/_app/favicon.ico"/>
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" language="javascript">
@@ -52,11 +50,11 @@
 
         window.IDE.config = {
 
-            "context": "/ide",
+            "context": "/ws",
 
-            "workspaceName": <%= EnvironmentContext.getCurrent().getWorkspaceName() == null ? null : "\"" + EnvironmentContext.getCurrent().getWorkspaceName() + "\"" %>,
+            "workspaceName": "<%= pageContext.getServletContext().getInitParameter("ws-name") %>",
 
-            "workspaceId": <%= EnvironmentContext.getCurrent().getWorkspaceId() == null ? null : "\"" + EnvironmentContext.getCurrent().getWorkspaceId() + "\"" %>,
+            "workspaceId": "<%= pageContext.getServletContext().getInitParameter("ws-id") %>",
 
             "projectName": window.location.pathname.split("/")[3] ? window.location.pathname.split("/")[3] : null,
 
@@ -64,9 +62,9 @@
 
             "hiddenFiles": ".*",
 
-            "facebookLikeURL": "/ide/_app/facebook-like.html",
+            "facebookLikeURL": "/ws/_app/facebook-like.html",
 
-            "googleLikeURL": "/ide/_app/google-like.html",
+            "googleLikeURL": "/ws/_app/google-like.html",
 
             "javaCodeAssistant": "/java-ca"
 
@@ -98,11 +96,11 @@
          * Make URL pretty
          */
 
-        window.history.pushState("", window.document.title, "/ide/" + window.IDE.config.workspaceName);
+        window.history.pushState("", window.document.title, window.IDE.config.context + "/" + window.IDE.config.workspaceName);
 
     </script>
 
-    <script type="text/javascript" language="javascript" src="/ide/_app/browserNotSupported.js"></script>
-    <script type="text/javascript" language="javascript" src="/ide/_app/_app.nocache.js"></script>
+    <script type="text/javascript" language="javascript" src="/ws/_app/browserNotSupported.js"></script>
+    <script type="text/javascript" language="javascript" src="/ws/_app/_app.nocache.js"></script>
 </head>
 </html>

@@ -145,15 +145,25 @@
         </dependency>
         <dependency>
             <groupId>com.codenvy.sdk</groupId>
-            <artifactId>assembly-platform-api</artifactId>
+            <artifactId>assembly-java-codeassistant</artifactId>
             <version>${project.version}</version>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>com.codenvy.sdk</groupId>
-            <artifactId>assemby-java-codeassistant</artifactId>
+            <artifactId>assembly-platform-api</artifactId>
             <version>${project.version}</version>
             <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.vfs</groupId>
+            <artifactId>codenvy-vfs-impl</artifactId>
+            <version>${codenvy.vfs.impl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.whitlockjc</groupId>
+            <artifactId>codenvy-ext-subversion</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.jcraft</groupId>
@@ -179,12 +189,6 @@
             <groupId>com.codenvy.platform-api</groupId>
             <artifactId>codenvy-api-vfs</artifactId>
             <version>${codenvy.platform-api.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.vfs</groupId>
-            <artifactId>codenvy-vfs-impl</artifactId>
-            <version>${codenvy.vfs.impl.version}</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
@@ -268,6 +272,13 @@
                                     <version>${ch.qos.logback.version}</version>
                                     <outputDirectory>${project.build.directory}/tomcat-ide/lib</outputDirectory>
                                     <destFileName>logback-classic.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.codenvy.ide</groupId>
+                                    <artifactId>codenvy-ssl-socket-factory</artifactId>
+                                    <version>${codenvy.plugin.datasource.version}</version>
+                                    <outputDirectory>${project.build.directory}/tomcat-ide/lib</outputDirectory>
+                                    <destFileName>codenvy-ssl-socket-factory.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
@@ -420,7 +431,7 @@
                                 <artifactItem>
                                     <groupId>com.codenvy.plugin-sdk</groupId>
                                     <artifactId>codenvy-sdk-tools</artifactId>
-                                    <version>${codenvy.plugin-java.version}</version>
+                                    <version>${codenvy.plugin-sdk.version}</version>
                                     <classifier>jar-with-dependencies</classifier>
                                     <outputDirectory>${project.build.directory}/tomcat-ide/sdk-tools</outputDirectory>
                                     <destFileName>codenvy-sdk-tools.jar</destFileName>
@@ -461,19 +472,19 @@
                                 <copy overwrite="true" todir="${project.build.directory}/tomcat-ide/sdk-resources">
                                     <fileset dir="${project.build.directory}/../../assembly-ide" includes="src/**, pom.xml" />
                                 </copy>
-                                <unwar dest="${project.build.directory}/packager-conf/war/ide" src="${project.build.directory}/packager-conf/war/assembly-ide-${project.version}.war" />
-                                <move todir="${project.build.directory}/packager-conf/war/ide/_app">
-                                    <fileset dir="${project.build.directory}/packager-conf/war/ide/_app/" />
+                                <unwar dest="${project.build.directory}/packager-conf/war/ws" src="${project.build.directory}/packager-conf/war/assembly-ide-${project.version}.war" />
+                                <move todir="${project.build.directory}/packager-conf/war/ws/_app">
+                                    <fileset dir="${project.build.directory}/packager-conf/war/ws/_app/" />
                                 </move>
                                 <move todir="${project.build.directory}/tomcat-ide/tutorials">
                                     <fileset dir="${project.build.directory}/packager-conf/zip/tutorials" />
                                 </move>
-                                <war destfile="${project.build.directory}/tomcat-ide/webapps/ide.war" needxmlfile="false">
-                                    <fileset dir="${project.build.directory}/packager-conf/war/ide" />
+                                <war destfile="${project.build.directory}/tomcat-ide/webapps/ws.war" needxmlfile="false">
+                                    <fileset dir="${project.build.directory}/packager-conf/war/ws" />
                                 </war>
                                 <copy file="${project.build.directory}/packager-conf/war/assembly-platform-api-${project.version}.war" overwrite="true" tofile="${project.build.directory}/tomcat-ide/webapps/api.war" />
                                 <copy file="${project.build.directory}/packager-conf/war/codenvy-ext-datasource-server-war-sdk-${codenvy.plugin.datasource.version}.war" overwrite="true" tofile="${project.build.directory}/tomcat-ide/webapps/datasource.war" />
-                                <copy file="${project.build.directory}/packager-conf/war/assemby-java-codeassistant-${project.version}.war" overwrite="true" tofile="${project.build.directory}/tomcat-ide/webapps/java-ca.war" />
+                                <copy file="${project.build.directory}/packager-conf/war/assembly-java-codeassistant-${project.version}.war" overwrite="true" tofile="${project.build.directory}/tomcat-ide/webapps/java-ca.war" />
                                 <copy file="${project.build.directory}/packager-conf/war/codenvy-api-docs-ui-${codenvy.api-docs-ui.version}.war" overwrite="true" tofile="${project.build.directory}/tomcat-ide/webapps/api-docs-ui.war" />
                                 <chmod dir="${project.build.directory}/tomcat-ide" includes="*.sh" perm="+x" />
                             </target>
