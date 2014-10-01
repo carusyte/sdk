@@ -161,11 +161,6 @@
             <version>${codenvy.vfs.impl.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.whitlockjc</groupId>
-            <artifactId>codenvy-ext-subversion</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
             <version>${com.jcraft.jsch.version}</version>
