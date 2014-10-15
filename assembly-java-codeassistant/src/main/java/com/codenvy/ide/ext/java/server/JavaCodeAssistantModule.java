@@ -10,7 +10,7 @@
  *******************************************************************************/
 package com.codenvy.ide.ext.java.server;
 
-import com.codenvy.ide.everrest.CodenvyAsynchronousJobPool;
+import com.codenvy.everrest.CodenvyAsynchronousJobPool;
 import com.codenvy.inject.DynaModule;
 import com.google.inject.AbstractModule;
 
@@ -26,6 +26,7 @@ public class JavaCodeAssistantModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(RestNameEnvironment.class);
+        bind(JavaProjectWatcherService.class);
         bind(AsynchronousJobPool.class).to(CodenvyAsynchronousJobPool.class);
         bind(new PathKey<>(AsynchronousJobService.class, "/async/{ws-id}")).to(AsynchronousJobService.class);
         bind(com.codenvy.api.core.notification.WSocketEventBusClient.class).asEagerSingleton();
