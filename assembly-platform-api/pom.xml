@@ -209,6 +209,11 @@
             <version>${codenvy.plugin-sdk.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.codenvy.plugin-wso2</groupId>
+            <artifactId>codenvy-ext-wso2-core</artifactId>
+            <version>${codenvy-plugin-wso2-version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.codenvy.plugin-yeoman</groupId>
             <artifactId>yeoman-builder</artifactId>
             <version>${codenvy.plugin.yeoman.version}</version>
