@@ -11,13 +11,12 @@
       Codenvy, S.A. - initial API and implementation
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>codenvy-sdk-parent</artifactId>
         <groupId>com.codenvy.sdk</groupId>
-        <version>3.1.0</version>
+        <version>3.1.1</version>
     </parent>
     <artifactId>assembly-ide</artifactId>
     <packaging>war</packaging>
@@ -199,11 +198,6 @@
             <version>${codenvy.plugin-sdk.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.codenvy.plugin-wso2</groupId>
-            <artifactId>codenvy-ext-wso2-core</artifactId>
-            <version>${codenvy-plugin-wso2-version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.codenvy.plugin-yeoman</groupId>
             <artifactId>yeoman-client</artifactId>
             <version>${codenvy.plugin.yeoman.version}</version>
@@ -333,7 +327,6 @@
                         <module>com.codenvy.ide.ext.java.JavaParserWorker</module>
                     </modules>
                     <logLevel>INFO</logLevel>
-                    <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
                     <style>PRETTY</style>
                     <!--<enableClosureCompiler>true</enableClosureCompiler>-->
                 </configuration>
@@ -351,7 +344,7 @@
                         <configuration>
                             <tasks>
                                 <move todir="${project.build.directory}/${project.artifactId}-${project.version}/_app/javaParserWorker">
-                                    <fileset dir="${project.build.directory}/${project.artifactId}-${project.version}/javaParserWorker"/>
+                                    <fileset dir="${project.build.directory}/${project.artifactId}-${project.version}/javaParserWorker" />
                                 </move>
                             </tasks>
                         </configuration>
@@ -364,11 +357,9 @@
                         </goals>
                         <configuration>
                             <tasks>
-                                <echo append="false" file="${project.build.directory}/classes/com/codenvy/ide/BuildInfo.properties">revision
-                                    = ${revision}
+                                <echo append="false" file="${project.build.directory}/classes/com/codenvy/ide/BuildInfo.properties">revision = ${revision}
                                     buildTime = ${timestamp}
-                                    version = ${project.version}
-                                </echo>
+                                    version = ${project.version}</echo>
                             </tasks>
                         </configuration>
                     </execution>
@@ -380,8 +371,7 @@
                 <configuration>
                     <packagingIncludes>WEB-INF/web.xml,
                         _app/**,
-                        IDE.jsp
-                    </packagingIncludes>
+                        IDE.jsp</packagingIncludes>
                 </configuration>
             </plugin>
             <plugin>
