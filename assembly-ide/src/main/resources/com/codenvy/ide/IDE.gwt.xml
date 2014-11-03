@@ -45,6 +45,7 @@
     <inherits name='com.codenvy.ide.ext.github.GitHub'/>
     <inherits name='com.codenvy.ide.ext.ssh.Ssh'/>
     <inherits name='com.codenvy.ide.ext.tutorials.Tutorials'/>
+    <inherits name='com.codenvy.ide.ext.datasource.Datasource'/>
     <inherits name='com.codenvy.ide.ext.wso2.WSO2'/>
     <inherits name='com.codenvy.ide.editor.codemirror.CodeMirrorEditor'/>
     <inherits name='com.codenvy.ide.editor.orion.OrionEditor'/>

@@ -332,7 +332,6 @@
                         <module>com.codenvy.ide.ext.java.JavaParserWorker</module>
                     </modules>
                     <logLevel>INFO</logLevel>
-                    <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
                     <style>PRETTY</style>
                     <!--<enableClosureCompiler>true</enableClosureCompiler>-->
                 </configuration>
