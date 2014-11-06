@@ -16,7 +16,7 @@
     <parent>
         <artifactId>codenvy-sdk-parent</artifactId>
         <groupId>com.codenvy.sdk</groupId>
-        <version>3.1.1</version>
+        <version>3.2.0</version>
     </parent>
     <artifactId>assembly-platform-api</artifactId>
     <packaging>war</packaging>
@@ -145,6 +145,11 @@
         <dependency>
             <groupId>com.codenvy.plugin-java</groupId>
             <artifactId>codenvy-builder-maven</artifactId>
+            <version>${codenvy.plugin-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codenvy.plugin-java</groupId>
+            <artifactId>codenvy-ext-ant</artifactId>
             <version>${codenvy.plugin-java.version}</version>
         </dependency>
         <dependency>
