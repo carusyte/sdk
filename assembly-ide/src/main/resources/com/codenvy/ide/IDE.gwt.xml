@@ -35,17 +35,12 @@
 
     <!-- Extensions                                                 -->
     <inherits name='com.codenvy.ide.ext.web.Web'/>
-    <inherits name='com.codenvy.ide.ext.java.Java'/>
     <inherits name='com.codenvy.ide.jseditor.java.JsJavaEditor'/>
     <inherits name='com.codenvy.ide.extension.ant.Ant'/>
-    <inherits name='com.codenvy.ide.ext.java.jdi.JavaRuntimeExtension'/>
-    <inherits name='com.codenvy.ide.extension.builder.Builder'/>
     <inherits name='com.codenvy.ide.extension.runner.Runner'/>
-    <inherits name='com.codenvy.ide.extension.maven.Maven'/>
     <inherits name='com.codenvy.ide.ext.git.Git'/>
     <inherits name='com.codenvy.ide.ext.github.GitHub'/>
     <inherits name='com.codenvy.ide.ext.ssh.Ssh'/>
-    <inherits name='com.codenvy.ide.ext.tutorials.Tutorials'/>
     <inherits name='com.codenvy.ide.ext.datasource.Datasource'/>
     <inherits name='com.codenvy.ide.ext.wso2.WSO2'/>
     <inherits name='com.codenvy.ide.editor.codemirror.CodeMirrorEditor'/>
